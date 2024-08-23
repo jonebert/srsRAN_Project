@@ -39,7 +39,6 @@
 #include "srsran/ngap/ngap_reset.h"
 #include "srsran/ngap/ngap_types.h"
 #include "srsran/ran/cause/ngap_cause.h"
-#include <iostream>
 
 using namespace srsran;
 using namespace asn1::ngap;
@@ -196,9 +195,6 @@ void ngap_impl::handle_initial_ue_message(const cu_cp_initial_ue_message& msg)
   init_ue_msg->ran_ue_ngap_id = ran_ue_id_to_uint(ue_ctxt.ue_ids.ran_ue_id);
 
   fill_asn1_initial_ue_message(init_ue_msg, msg, context);
-  std::cout << "Set ID: " << init_ue_msg->five_g_s_tmsi.amf_set_id.to_number() << std::endl;
-  std::cout << "Pointer: " << init_ue_msg->five_g_s_tmsi.amf_pointer.to_number() << std::endl;
-  std::cout << "TMSI: " << init_ue_msg->five_g_s_tmsi.five_g_tmsi.to_number() << std::endl;
 
   // Start PDU session setup timer
   ue_ctxt.pdu_session_setup_timer.set(context.pdu_session_setup_timeout, [this, msg](timer_id_t /*tid*/) {

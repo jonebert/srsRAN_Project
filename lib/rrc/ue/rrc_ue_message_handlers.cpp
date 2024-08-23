@@ -31,6 +31,7 @@
 #include "srsran/asn1/rrc_nr/dl_ccch_msg.h"
 #include "srsran/asn1/rrc_nr/ul_ccch_msg.h"
 #include "srsran/ran/lcid.h"
+#include <iostream>
 
 using namespace srsran;
 using namespace srs_cu_cp;
@@ -89,6 +90,7 @@ void rrc_ue_impl::handle_rrc_setup_request(const asn1::rrc_nr::rrc_setup_request
   switch (request_ies.ue_id.type().value) {
     case init_ue_id_c::types_opts::ng_5_g_s_tmsi_part1: {
       context.setup_ue_id = request_ies.ue_id.ng_5_g_s_tmsi_part1().to_number();
+      std::cout << "Part 1: " << context.setup_ue_id << std::endl;
 
       // As per TS 23.003 section 2.10.1 the last 32Bits of the 5G-S-TMSI are the 5G-TMSI
       unsigned shift_bits =
