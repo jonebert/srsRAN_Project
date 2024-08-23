@@ -119,7 +119,7 @@ void rrc_setup_procedure::send_initial_ue_msg(const asn1::rrc_nr::rrc_setup_comp
   cu_cp_five_g_s_tmsi five_g_s_tmsi;
   if (context.five_g_tmsi.has_value()) {
     five_g_s_tmsi.five_g_tmsi = context.five_g_tmsi.value();
-    std::cout << "Got TMSI: " << context.five_g_tmsi.value() << std::endl;
+    std::cout << "Got TMSI: " << five_g_s_tmsi.five_g_tmsi << std::endl;
     // amf_pointer and amf_set_id will be set by NGAP
     init_ue_msg.five_g_s_tmsi = five_g_s_tmsi;
   }
